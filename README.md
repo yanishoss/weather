@@ -1,5 +1,5 @@
 # Weather
-#### A simple CLI to see the weather (do not judge me...)
+#### A simple CLI to see the weather while you're in your terminal.
 
 
 # How to use it ?
