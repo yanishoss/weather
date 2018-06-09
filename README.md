@@ -1,9 +1,9 @@
 # Weather
-###### A simple CLI to see the weather (do not judge me...)
+### A simple CLI to see the weather (do not judge me...)
 
 
 # How to use it ?
-###### Just type in your terminal: 
+### Just type in your terminal: 
 ```
 # Install the CLI
 npm install -g weather
