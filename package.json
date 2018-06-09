@@ -1,0 +1,29 @@
+{
+  "name": "weather",
+  "version": "1.0.0-alpha",
+  "description": "A simple CLI to see the weather while you're in your terminal.",
+  "main": "build/index.js",
+  "scripts": {
+    "test": "test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/yanishoss/weather.git"
+  },
+  "keywords": [
+    "weather",
+    "cli",
+    "terminal",
+    "rain",
+    "summer",
+    "spring",
+    "hot",
+    "cold"
+  ],
+  "author": "Yanis HEDJEM",
+  "license": "UNLICENSED",
+  "bugs": {
+    "url": "https://github.com/yanishoss/weather/issues"
+  },
+  "homepage": "https://github.com/yanishoss/weather#readme"
+}
