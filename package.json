@@ -25,5 +25,15 @@
   "bugs": {
     "url": "https://github.com/yanishoss/weather/issues"
   },
-  "homepage": "https://github.com/yanishoss/weather#readme"
+  "homepage": "https://github.com/yanishoss/weather#readme",
+  "devDependencies": {
+    "husky": "1.0.0-rc.8",
+    "prettier": "1.13.5",
+    "pretty-quick": "1.6.0"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "pretty-quick --staged"
+    }
+  }
 }
