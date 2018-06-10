@@ -13,7 +13,7 @@ weather -h
 ```
 
 # Who the fuck did that app ?
-It's @yanishoss.
+It's [Yanis HEDJEM](@yanishoss).
 
-# Who the fuck is he ?
-A very young developer :metal: as you can image with his vocabulary.
+# Who the fuck is he ? :metal:
+A very young developer as you can image with his vocabulary.
