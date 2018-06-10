@@ -29,7 +29,7 @@ This project is under the [MIT License](https://en.wikipedia.org/wiki/MIT_Licens
 You can retrieve the license of this project [here](LICENSE).
 
 # :metal: Who the fuck did that app ? 
-A [very young developer][profil] as you can image with his vocabulary and the hole bunch of emoji.
+A [very young developer][profil] as you can image with his vocabulary and the whole bunch of emoji.
 
 [profil]: https://github.com/yanishoss
 [repository]: https://github.com/yanishoss/weather
