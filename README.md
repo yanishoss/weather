@@ -13,7 +13,9 @@ weather -h
 ```
 
 # Who the fuck did that app ?
-It's [Yanis HEDJEM](https://github.com/yanishoss).
+It's [Yanis HEDJEM](profil).
 
 # :metal: Who the fuck is he ? 
-A very young developer as you can image with his vocabulary.
+A [very young developer](profil) as you can image with his vocabulary.
+
+[profil](https://github.com/yanishoss)
