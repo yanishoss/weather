@@ -1,10 +1,10 @@
-# Weather
-#### A simple CLI to see the weather while you're in your terminal.
+# :sunny: Weather
+> A simple CLI to see the weather while you're in your terminal.
 
 
 # How to use it ?
 #### Just type in your terminal: 
-```
+```shell
 # Install the CLI
 npm install -g weather
 
