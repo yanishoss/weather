@@ -24,6 +24,9 @@ To contribute, it's very simple:
    * The changes will be deploy to [npm](https://npmjs.com).
 1. After the CI process is passed, you can access [the Trello board][trello] and put your task inside the *Done* list.
 
+# :snake: License
+The project is under 
+
 # :metal: Who the fuck did that app ? 
 A [very young developer][profil] as you can image with his vocabulary.
 
