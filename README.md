@@ -26,7 +26,7 @@ To contribute, it's very simple:
 
 # :snake: License
 This project is under the [MIT License](https://en.wikipedia.org/wiki/MIT_License).
-You can retrieve the license of this project [here](../LICENSE)
+You can retrieve the license of this project [here](LICENSE)
 
 # :metal: Who the fuck did that app ? 
 A [very young developer][profil] as you can image with his vocabulary.
