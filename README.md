@@ -25,7 +25,7 @@ To contribute, it's very simple:
 1. After the CI process is passed, you can access the [Trello board][trello] and put your task inside the *Done* list.
 
 # :snake: License
-This project is under the [MIT License](https://en.wikipedia.org/wiki/MIT_License).
+This project is under the [MIT License](https://en.wikipedia.org/wiki/MIT_License).  
 You can retrieve the license of this project [here](LICENSE).
 
 # :metal: Who the fuck did that app ? 
