@@ -1,5 +1,5 @@
 # :sunny: Weather
-> A simple CLI to see the weather while you're in your terminal.
+> A simple CLI to see the weather while you're in your terminal.  
 > Because we know you don't glance outside that much often :sunglasses:
 
 # How to use it ?
