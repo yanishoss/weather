@@ -1,7 +1,6 @@
 # :sunny: Weather
 > A simple CLI to see the weather while you're in your terminal.
-
-![alt text](https://static.photocdn.pt/images/articles/2018/03/09/articles/2017_8/landscape_photography.jpg)
+> Because we know you don't glance outside that much often :sunglasses:
 
 # How to use it ?
 #### Just type in your terminal: 
