@@ -2,8 +2,8 @@
 > A simple CLI to see the weather while you're in your terminal.  
 > Because we know you don't glance outside that much often :sunglasses:
 
-# How to use it ?
-#### Just type in your terminal: 
+# :rocket: How to use it ?
+Just type in your terminal: 
 ```shell
 # Install the CLI
 npm install -g weather
@@ -24,7 +24,7 @@ To contribute, it's very simple:
    * The changes will be deploy to [npm](https://npmjs.com).
 1. After the CI process is passed, you can access the [Trello board][trello] and put your task inside the *Done* list.
 
-# :snake: License
+# :wolf: License
 This project is under the [MIT License](https://en.wikipedia.org/wiki/MIT_License).  
 You can retrieve the license of this project [here](LICENSE).
 
