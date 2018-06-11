@@ -62,3 +62,6 @@ typings/
 
 # Git backup file
 *.orig
+
+# Vim backup file
+*.swp

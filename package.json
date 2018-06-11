@@ -42,8 +42,7 @@
   },
   "husky": {
     "hooks": {
-      "pre-commit": "npx lint-staged",
-      "pre-push": "npm run format && git commit -am \"Linted and formatted the files with TSLint and Prettier\""
+      "pre-commit": "npx lint-staged"
     }
   },
   "lint-staged": {
