@@ -4,7 +4,7 @@
   "description": "A simple CLI to see the weather while you're in your terminal.",
   "main": "build/index.js",
   "scripts": {
-    "test": "test",
+    "test": "jest",
     "format": "npm run lint && npm run prettify",
     "lint": "npx tslint --fix src/**/*.ts",
     "prettify": "npx prettier **/*.ts",
@@ -31,10 +31,13 @@
   },
   "homepage": "https://github.com/yanishoss/weather#readme",
   "devDependencies": {
+    "@types/jest": "23.0.2",
     "husky": "1.0.0-rc.8",
+    "jest": "23.1.0",
     "lint-staged": "7.2.0",
     "npx": "10.2.0",
     "prettier": "1.13.5",
+    "ts-jest": "22.4.6",
     "tslint": "5.10.0",
     "tslint-config-airbnb": "5.9.2",
     "tslint-config-prettier": "1.13.0",
