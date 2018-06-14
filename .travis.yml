@@ -1,0 +1,15 @@
+language: node_js
+node_js:
+- lts/*
+- node
+install: yarn
+script: yarn test && yarn build
+deploy:
+  skip_cleanup: true
+  provider: npm
+  email: yanishproduction@gmail.com
+  api_key:
+    secure: iHOlXUoqe2Hm7bIOyojTpXuRUaIg24SbydU7m3tJFrmxz38hvzzTqgAcNscEGGXq+Qxor5/VbI7f9LTJgTI3Jae3RtMq4OMwfLO1USvUa7NK/3mWTnoLPTD9axHDqo90zeDolwPa0xnyc0TOPbaMFYv67uoSLF2a0nPENWXAg+VvwUoR4kop63c8nm+dVr7lJa1ekmhg25PsFY7QmqCRs5XToddeJKN7svhtNSpy1X6juRxGQec3kfXUsQ5PhAoWw6mZc2Yai7CmvjyWS3PHMp+q+VQbj2PTtBWCWuxF8h1B3QSOwTqD28eyQYdo+43PvB0Su6oi9fwxdVdnQA5CH5knAHtyh7mc+1bw9X528uZb12jygQvrjgb+vymdqklmmtJcqZs9ZzyWDej2mQjey0k+9kBiz4epMPGcKOJyASWBRVhf3OuYJ2iJ4FODGEbACOMHTnk+qEJl8j/27Bit6hl/s6chIHXnKdaIhBVYSjqV1AoiyebrBGCqQxKygkcoquj4+E84lUMzb/Uq9gY6QQlQGUwVEfI3DuqmzI/oK+Yj1j+RKaRL9qS0JOlRrMGpo47mZiNXX3XvTd2xVTiq0zQQgoYMWv+hYvRTalp5e1E/jGNd3vxsLpUF/HSYVtT/ltjOxf9+cOWaV/tobp8TygjWy7HpvHbV2AxvFPkPxiQ=
+  on: 
+    tags: true
+    branch: master
