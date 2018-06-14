@@ -1,4 +1,5 @@
 # :sunny: Weather
+[![Build Status](https://travis-ci.org/yanishoss/weather.svg?branch=master)](https://travis-ci.org/yanishoss/weather)
 > A simple CLI to see the weather while you're in your terminal.  
 > Because we know you don't glance outside that much often :sunglasses:
 
