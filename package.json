@@ -4,7 +4,7 @@
   "description": "A simple CLI to see the weather while you're in your terminal.",
   "main": "build/index.js",
   "scripts": {
-    "test": "jest",
+    "test": "jest --passWithNoTests",
     "format": "npm run lint && npm run prettify",
     "lint": "npx tslint --fix src/**/*.ts",
     "prettify": "npx prettier **/*.ts",
