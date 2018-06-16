@@ -29,7 +29,7 @@ And that's all, for syntax issues, [Prettier][prettier] will do the stuff for yo
 ## :pencil2: <a name="what-should-i-do">What should i do ?</a>
 There is a [Trello board][trello] with all the stuff left to do, [join it][invite]!
 
-## <a name="trello-board">How to use our ![Trello board][trello]</a> ?
+## <a name="trello-board">How to use our [Trello board][trello]</a> ?
 * Just [join it][invite] first.
 * Look at the tasks labeled in red, these are the tasks to do.
 * When you start a task, label it with the *In progress* label.
