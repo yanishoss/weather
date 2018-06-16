@@ -8,7 +8,8 @@
     "format": "npm run lint && npm run prettify",
     "lint": "npx tslint --fix src/**/*.ts",
     "prettify": "npx prettier **/*.ts",
-    "build": "tsc"
+    "build": "tsc",
+    "docs": "docsify serve ./docs"
   },
   "repository": {
     "type": "git",
@@ -35,6 +36,7 @@
     "@types/jest": "23.0.2",
     "@types/node": "10.3.2",
     "@types/raven": "2.5.1",
+    "docsify-cli": "4.2.1",
     "husky": "1.0.0-rc.8",
     "jest": "23.1.0",
     "lint-staged": "7.2.0",
