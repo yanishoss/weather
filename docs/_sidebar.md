@@ -4,3 +4,4 @@
 * Basics
    * [Installation](/basics/install.md)
    * [Try it out](/basics/try.md)
+* [*Internal API*](/internal/api.md)
