@@ -1,5 +1,5 @@
 export enum ForecastPeriod {
-	HOUR,
-	DAY,
-	QUARTER,
+ HOUR,
+ DAY,
+ QUARTER,
 }
