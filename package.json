@@ -56,8 +56,8 @@
   },
   "lint-staged": {
     "**/*.ts": [
-      "npx tslint --fix",
       "npx prettier",
+      "npx tslint --fix",
       "git add"
     ]
   },
