@@ -1,13 +1,17 @@
 import { TemperatureUnit } from './temperatureUnit';
 
+export { TemperatureUnit } from './temperatureUnit';
+
 // This function assumes you are not going to
-// convert celsius to celsius or fahrenheit to fahrenheit.
+// convert celsius to celsius and
+// convert fahrenheit to fahrenheit.
+// Stay clever bro.
 function convertTo(temperature: number, toUnit: TemperatureUnit): number {
   switch (toUnit) {
     case TemperatureUnit.CELSIUS:
-      return temperature * -17.22;
+      return (temperature - 32) / 1.8;
     case TemperatureUnit.FAHRENHEIT:
-      return temperature / -17.22;
+      return (temperature * 1.8) + 32;
     default:
       return temperature;
   }
@@ -28,7 +32,7 @@ export class Temperature {
         this._fahrenheit = temperature;
         break;
       default:
-        throw new Error('Unknown unit, please use either Farenheit (1) or Celsius(0)');
+        throw new Error('Unknown unit, please use either Celsius(0) or Fahrenheit(1)');
     }
   }
 
