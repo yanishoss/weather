@@ -34,7 +34,9 @@
   "devDependencies": {
     "@types/cosmiconfig": "5.0.2",
     "@types/jest": "23.0.2",
+    "@types/lockfile": "1.0.0",
     "@types/node": "10.3.2",
+    "@types/public-ip": "2.3.0",
     "@types/raven": "2.5.1",
     "docsify-cli": "4.2.1",
     "husky": "1.0.0-rc.8",
@@ -62,6 +64,8 @@
     ]
   },
   "dependencies": {
-    "cosmiconfig": "5.0.5"
+    "axios": "0.18.0",
+    "cosmiconfig": "5.0.5",
+    "public-ip": "2.4.0"
   }
 }

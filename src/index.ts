@@ -6,7 +6,7 @@ const { searchSync }: Explorer = cosmiconfig('weather');
 const conf: CosmiconfigResult = searchSync();
 
 // Configures the Sentry's client, see: https://sentry.io
-Raven.config(conf !== null ? conf.config.SENTRY_KEY : '', {
+Raven.config(conf !== null ? conf.config.sentryKey : '', {
   release: conf !== null
 	&& !conf.isEmpty
 	? conf.config.version
