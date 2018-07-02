@@ -1,5 +1,5 @@
 {
-  "name": "@yanish/weather-cli",
+  "name": "weather-in-terminal",
   "description": "A simple CLI to see the weather while you're in your terminal.",
   "version": "1.0.0-alpha",
   "author": "Yanis HEDJEM",
