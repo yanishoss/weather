@@ -1,7 +1,4 @@
 "use strict";
-var __importDefault = (this && this.__importDefault) || function (mod) {
-    return (mod && mod.__esModule) ? mod : { "default": mod };
-};
 var __importStar = (this && this.__importStar) || function (mod) {
     if (mod && mod.__esModule) return mod;
     var result = {};
@@ -9,10 +6,13 @@ var __importStar = (this && this.__importStar) || function (mod) {
     result["default"] = mod;
     return result;
 };
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
 Object.defineProperty(exports, "__esModule", { value: true });
+const Config = __importStar(require("@oclif/config"));
 const cosmiconfig_1 = __importDefault(require("cosmiconfig"));
 const raven_1 = __importDefault(require("raven"));
-const Config = __importStar(require("@oclif/config"));
 const cli_1 = require("./cli");
 const { searchSync } = cosmiconfig_1.default('weather');
 const conf = searchSync();
@@ -23,7 +23,6 @@ raven_1.default.config(conf !== null ? conf.config.sentryKey : '', {
         : 'unknown',
 }).install();
 async function run() {
-    new cli_1.Weather(process.argv.slice(2), await Config.load(), conf ? conf.config.accuweatherKey : "").run();
+    new cli_1.Weather(process.argv.slice(2), await Config.load(), conf ? conf.config.accuweatherKey : '').run();
 }
 exports.run = run;
-;

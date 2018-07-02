@@ -19,14 +19,14 @@ function emoji(iconNumber) {
         case 5:
         case 30:
         default:
-            return node_emoji_1.get(":sunny");
+            return node_emoji_1.get(':sunny');
             break;
         case 6:
         case 7:
         case 8:
         case 11:
         case 32:
-            return node_emoji_1.get(":cloud:");
+            return node_emoji_1.get(':cloud:');
             break;
         case 12:
         case 13:
@@ -34,12 +34,12 @@ function emoji(iconNumber) {
         case 18:
         case 25:
         case 26:
-            return node_emoji_1.get(":umbrella:");
+            return node_emoji_1.get(':umbrella:');
             break;
         case 15:
         case 16:
         case 17:
-            return node_emoji_1.get(":zap:");
+            return node_emoji_1.get(':zap:');
             break;
         case 19:
         case 20:
@@ -49,7 +49,7 @@ function emoji(iconNumber) {
         case 24:
         case 29:
         case 31:
-            return node_emoji_1.get(":snowflake:");
+            return node_emoji_1.get(':snowflake:');
             break;
         case 33:
         case 34:
@@ -63,7 +63,7 @@ function emoji(iconNumber) {
         case 42:
         case 43:
         case 44:
-            return node_emoji_1.get(":moon:");
+            return node_emoji_1.get(':moon:');
             break;
     }
 }
@@ -75,7 +75,7 @@ class Weather extends command_1.default {
     async run() {
         const { flags, args: { location } } = this.parse(Weather);
         if (!this.accuweatherKey) {
-            this.error("There is not Accuweather API key, please create an .weatherrc.json and put a key at \"accuweatherKey\"");
+            this.error('There is not Accuweather API key, please create an .weatherrc.json and put a key at "accuweatherKey"');
         }
         try {
             const currentCondition = await new common_api_1.WeatherClient(this.accuweatherKey).getCurrentWeather(location);
@@ -84,49 +84,50 @@ class Weather extends command_1.default {
             }
         }
         catch (e) {
-            this.error("A little network error occurred, please check your internet connection!");
+            this.error('A little network error occurred, please check your internet connection!');
         }
+        console.log("From cache");
     }
 }
-Weather.description = "Gets the current weather";
-Weather.usage = "weather [location?] --emoji --word --verbose --complete";
+Weather.description = 'Gets the current weather';
+Weather.usage = 'weather [location?] --emoji --word --verbose --complete';
 Weather.examples = [
-    "$ weather --emoji",
-    "$ weather New York --verbose",
-    "$ weather Paris --complete",
-    "$ weather --word"
+    '$ weather --emoji',
+    '$ weather New York --verbose',
+    '$ weather Paris --complete',
+    '$ weather --word',
 ];
 Weather.args = [
     {
-        name: "location",
+        name: 'location',
         required: false,
-        description: "Sets the location you want the weather to be from"
-    }
+        description: 'Sets the location you want the weather to be from',
+    },
 ];
 Weather.flags = {
     emoji: command_1.flags.boolean({
-        char: "e",
-        description: "Prints the weather as an emoji",
-        exclusive: ["complete", "word", "verbose"],
-        allowNo: false
+        char: 'e',
+        description: 'Prints the weather as an emoji',
+        exclusive: ['complete', 'word', 'verbose'],
+        allowNo: false,
     }),
     word: command_1.flags.boolean({
-        char: "w",
-        description: "Prints the weather as a short word",
-        exclusive: ["verbose", "complete", "emoji"],
-        allowNo: false
+        char: 'w',
+        description: 'Prints the weather as a short word',
+        exclusive: ['verbose', 'complete', 'emoji'],
+        allowNo: false,
     }),
     verbose: command_1.flags.boolean({
-        char: "v",
-        description: "Prints the weather as a long sentence",
-        exclusive: ["word", "complete", "emoji"],
-        allowNo: false
+        char: 'v',
+        description: 'Prints the weather as a long sentence',
+        exclusive: ['word', 'complete', 'emoji'],
+        allowNo: false,
     }),
     complete: command_1.flags.boolean({
-        char: "c",
-        description: "Prints the weather in details, with temperature, wind and so on",
-        exclusive: ["emoji", "word", "verbose"],
-        allowNo: false
-    })
+        char: 'c',
+        description: 'Prints the weather in details, with temperature, wind and so on',
+        exclusive: ['emoji', 'word', 'verbose'],
+        allowNo: false,
+    }),
 };
 exports.Weather = Weather;

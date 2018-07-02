@@ -91,7 +91,8 @@ class WeatherClient {
             cache.push('lastUserWeather', Object.assign({}, userWeather, { date: userWeather.date.getTime() }));
             return userWeather;
         }
-        const responsesFromCache = cache.fetch('results');
+        const responsesFromCache = cache
+            .fetch('results');
         const responseFromCache = responsesFromCache
             ? responsesFromCache[location]
             : undefined;

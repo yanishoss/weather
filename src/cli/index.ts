@@ -132,6 +132,5 @@ constructor(argv: string[], config: Config.IConfig, private accuweatherKey: stri
   } catch (e) {
 	this.error('A little network error occurred, please check your internet connection!'); 
   }
-						console.log("From cache");
   }
 }

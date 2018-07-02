@@ -1,5 +1,5 @@
-import Command from "@oclif/command";
-import * as Config from "@oclif/config";
+import Command from '@oclif/command';
+import * as Config from '@oclif/config';
 export declare class Weather extends Command {
     private accuweatherKey;
     static description: string;
