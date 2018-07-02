@@ -3,7 +3,10 @@ node_js:
 - lts/*
 - node
 install: yarn
-script: yarn test && rm build && yarn build
+script: 
+  - rm build
+  - yarn prettify
+  - yarn test && yarn build
 deploy:
   skip_cleanup: true
   provider: npm
