@@ -29,6 +29,10 @@ interface ILocalization {
   city: string;
 }
 
+interface IMapSearchToWeather {
+  [name: string]: IWeatherCondition;
+}
+
 async function getClientLocation(axiosInstance: AxiosInstance): Promise<ILocalization> {
   const ip: string = await v4();
   const response: AxiosResponse = await axiosInstance.get('/locations/v1/cities/ipaddress', {
@@ -96,25 +100,23 @@ export class WeatherClient {
 
   public async getCurrentWeather(location?: string): Promise<IWeatherCondition> {
     if (!location) {
-      const lastLocationCheck: Date = new Date(
-				cache.fetch<number>('lastLocationCheck')
-				|| 0,
-			);
-      const checkValidityStamp: number = lastLocationCheck
-				.getMilliseconds()
-				+ 1000 * 60 * 60;
+      const lastLocationCheck: Date = new Date(cache.fetch<number>('lastLocationCheck') || 0);
 
+      const checkValidityStamp: number = lastLocationCheck.getTime() + 1000 * 60 * 60;
       if (checkValidityStamp > Date.now()) {
-        const lastWeather: IWeatherCondition | undefined = cache
-					.fetch<IWeatherCondition>('lastWeather');
+        const lastUserWeather: IWeatherCondition | undefined = cache
+					.fetch<IWeatherCondition>('lastUserWeather');
 
-        if (lastWeather) {
-          return lastWeather;
+        if (lastUserWeather) {
+          lastUserWeather.date = new Date(lastUserWeather.date);
+          if (lastUserWeather.date.getTime() + 1000 * 60 * 60 > Date.now()) {
+            return lastUserWeather;
+          }
         }
       }
 
       const clientLocation: ILocalization = await getClientLocation(this.httpClient);
-      cache.push('lastLocationCheck', new Date(Date.now()).toJSON());
+      cache.push('lastLocationCheck', new Date(Date.now()).getTime());
 
       const responseFromUserLocation: AxiosResponse = await this
 				.httpClient
@@ -123,10 +125,33 @@ export class WeatherClient {
     details: true,
   },
 });
-      return responseToIWeatherCondition({
+
+      const userWeather: IWeatherCondition = responseToIWeatherCondition({
         ...responseFromUserLocation.data[0],
         City: clientLocation.city,
       });
+
+      cache.push('lastUserWeather', {
+        ...userWeather,
+        date: userWeather.date.getTime(),
+      });
+
+      return userWeather;
+    }
+
+    const responsesFromCache: IMapSearchToWeather | undefined = cache
+		.fetch<IMapSearchToWeather>('results');
+
+    const responseFromCache: IWeatherCondition | undefined = responsesFromCache
+		? responsesFromCache[location]
+		: undefined;
+
+    if (responseFromCache) {
+      responseFromCache.date = new Date(responseFromCache.date);
+
+      if (responseFromCache.date.getTime() + 1000 * 60 * 60 > Date.now()) {
+        return responseFromCache;
+      }
     }
 
     const localization: ILocalization = await getLocation(location, this.httpClient);
@@ -138,9 +163,19 @@ export class WeatherClient {
   },
 });
 
-    return responseToIWeatherCondition({
+    const locationWeather: IWeatherCondition = responseToIWeatherCondition({
       ...responseFromLocation.data[0],
       City: localization.city,
     });
+
+    cache.push('results', {
+      ...responsesFromCache,
+      [location]: {
+        ...locationWeather,
+        date: locationWeather.date.getTime(),
+      },
+    });
+
+    return locationWeather;
   }
 }

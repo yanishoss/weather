@@ -1,43 +1,32 @@
 {
   "name": "weather",
-  "version": "1.0.0-alpha",
   "description": "A simple CLI to see the weather while you're in your terminal.",
-  "main": "build/index.js",
-  "scripts": {
-    "test": "jest --passWithNoTests",
-    "format": "npm run lint && npm run prettify",
-    "lint": "npx tslint --fix src/**/*.ts",
-    "prettify": "npx prettier **/*.ts",
-    "build": "tsc",
-    "docs": "docsify serve ./docs"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/yanishoss/weather.git"
-  },
-  "keywords": [
-    "weather",
-    "cli",
-    "terminal",
-    "rain",
-    "summer",
-    "spring",
-    "hot",
-    "cold"
-  ],
+  "version": "1.0.0-alpha",
   "author": "Yanis HEDJEM",
-  "license": "MIT",
   "bugs": {
     "url": "https://github.com/yanishoss/weather/issues"
   },
-  "homepage": "https://github.com/yanishoss/weather#readme",
+  "dependencies": {
+    "@oclif/command": "^1.4.34",
+    "@oclif/config": "^1.6.33",
+    "@oclif/plugin-help": "2.0.5",
+    "@oclif/plugin-not-found": "1.1.4",
+    "axios": "0.18.0",
+    "cosmiconfig": "5.0.5",
+    "node-emoji": "1.8.1",
+    "oclif": "1.8.5",
+    "public-ip": "2.4.0",
+    "user-home": "2.0.0"
+  },
   "devDependencies": {
     "@types/cosmiconfig": "5.0.2",
     "@types/jest": "23.0.2",
     "@types/lockfile": "1.0.0",
     "@types/node": "10.3.2",
+    "@types/node-emoji": "1.8.0",
     "@types/public-ip": "2.3.0",
     "@types/raven": "2.5.1",
+    "@types/user-home": "2.0.0",
     "docsify-cli": "4.2.1",
     "husky": "1.0.0-rc.8",
     "jest": "23.1.0",
@@ -45,17 +34,30 @@
     "npx": "10.2.0",
     "prettier": "1.13.5",
     "raven": "^2.6.2",
+    "rimraf": "^2.6.2",
     "ts-jest": "22.4.6",
     "tslint": "5.10.0",
     "tslint-config-airbnb": "5.9.2",
     "tslint-config-prettier": "1.13.0",
     "typescript": "2.9.1"
   },
+  "homepage": "https://github.com/yanishoss/weather#readme",
   "husky": {
     "hooks": {
       "pre-commit": "npx tsc --noEmit && npx lint-staged"
     }
   },
+  "keywords": [
+    "cli",
+    "cold",
+    "hot",
+    "rain",
+    "spring",
+    "summer",
+    "terminal",
+    "weather"
+  ],
+  "license": "MIT",
   "lint-staged": {
     "**/*.ts": [
       "npx prettier",
@@ -63,9 +65,34 @@
       "git add"
     ]
   },
-  "dependencies": {
-    "axios": "0.18.0",
-    "cosmiconfig": "5.0.5",
-    "public-ip": "2.4.0"
+  "main": "build/index.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/yanishoss/weather.git"
+  },
+  "scripts": {
+    "build": "tsc",
+    "docs": "docsify serve ./docs",
+    "format": "npm run lint && npm run prettify",
+    "lint": "npx tslint --fix src/**/*.ts",
+    "prettify": "npx prettier **/*.ts",
+    "test": "jest --passWithNoTests"
+  },
+  "bin": {
+    "weather": "./bin/run"
+  },
+  "engines": {
+    "node": ">=8.0.0"
+  },
+  "files": [
+    "/bin",
+    "/build"
+  ],
+  "oclif": {
+    "bin": "weather",
+    "plugins": [
+      "@oclif/plugin-help",
+      "@oclif/plugin-not-found"
+    ]
   }
 }

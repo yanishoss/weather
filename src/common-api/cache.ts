@@ -1,6 +1,7 @@
 import { readFile, writeFile } from 'fs';
+import userHome from 'user-home';
 
-const PATH = '../../weather.lock';
+const PATH = `${userHome}/weather.lock`;
 
 export class Cache {
   private lockfile: {[name: string]: any} = {};
@@ -9,7 +10,6 @@ export class Cache {
       if (err) {
         return;
       }
-
       this.lockfile = JSON.parse(lockfile);
     });
   }
@@ -22,9 +22,7 @@ export class Cache {
     this.lockfile[key] = data;
 
     writeFile(PATH, JSON.stringify(this.lockfile), (err) => {
-      if (err) {
-        throw err;
-      }
+      throw err;
     });
   }
 }

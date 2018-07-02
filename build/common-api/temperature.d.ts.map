@@ -1,0 +1,1 @@
+{"version":3,"file":"temperature.d.ts","sourceRoot":"","sources":["../../src/common-api/temperature.ts"],"names":[],"mappings":"AAAA,OAAO,EAAE,eAAe,EAAE,MAAM,mBAAmB,CAAC;AAEpD,OAAO,EAAE,eAAe,EAAE,MAAM,mBAAmB,CAAC;AAiBpD;IACC,OAAO,CAAC,QAAQ,CAAS;IACzB,OAAO,CAAC,WAAW,CAAS;gBAER,WAAW,EAAE,MAAM,EAAE,IAAI,EAAE,eAAe;IAelD,OAAO,EAAI,MAAM;IASjB,UAAU,EAAI,MAAM;CAQhC"}

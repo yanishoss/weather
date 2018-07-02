@@ -1,0 +1,1 @@
+{"version":3,"file":"speed.d.ts","sourceRoot":"","sources":["../../src/common-api/speed.ts"],"names":[],"mappings":"AAAA,OAAO,EAAE,SAAS,EAAE,MAAM,aAAa,CAAC;AAExC,OAAO,EAAE,SAAS,EAAE,MAAM,aAAa,CAAC;AAmBxC;IACC,OAAO,CAAC,OAAO,CAAS;IACxB,OAAO,CAAC,OAAO,CAAS;gBAEX,KAAK,EAAE,MAAM,EAAE,IAAI,EAAE,SAAS;IAe/B,MAAM,EAAI,MAAM;IAShB,MAAM,EAAI,MAAM;CAQ5B"}

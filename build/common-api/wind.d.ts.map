@@ -1,0 +1,1 @@
+{"version":3,"file":"wind.d.ts","sourceRoot":"","sources":["../../src/common-api/wind.ts"],"names":[],"mappings":"AAAA,OAAO,EAAE,SAAS,EAAE,MAAM,aAAa,CAAC;AACxC,OAAO,EAAE,KAAK,EAAE,MAAM,SAAS,CAAC;AAEhC;IACqB,KAAK,EAAE,KAAK;IAAS,SAAS,EAAE,SAAS;gBAAzC,KAAK,EAAE,KAAK,EAAS,SAAS,EAAE,SAAS;CAC7D"}
