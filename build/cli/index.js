@@ -86,7 +86,6 @@ class Weather extends command_1.default {
         catch (e) {
             this.error('A little network error occurred, please check your internet connection!');
         }
-        console.log("From cache");
     }
 }
 Weather.description = 'Gets the current weather';

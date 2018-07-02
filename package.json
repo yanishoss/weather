@@ -1,7 +1,7 @@
 {
   "name": "weather-in-terminal",
   "description": "A simple CLI to see the weather while you're in your terminal.",
-  "version": "1.0.7-alpha",
+  "version": "1.0.8-alpha",
   "author": "Yanis HEDJEM",
   "bugs": {
     "url": "https://github.com/yanishoss/weather/issues"
