@@ -1,0 +1,11 @@
+*.log
+tslint.json
+tsconfig.json
+jest.config
+CONTRIBUTING.md
+CODE_OF_CONDUCT.md
+.travis.yml
+.prettierrc
+.prettierignore
+.gitignore
+src/
