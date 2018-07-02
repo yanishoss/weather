@@ -3,9 +3,7 @@ node_js:
 - lts/*
 - node
 install: yarn
-script: 
-  - yarn test && rm build && yarn build
-  - git add build && git commit -m "TRAVISCI: Built the project"
+script: yarn test && rm build && yarn build
 deploy:
   skip_cleanup: true
   provider: npm
