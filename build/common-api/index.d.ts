@@ -1,5 +1,4 @@
 export * from './direction';
-export * from './orientation';
 export * from './speed';
 export * from './temperature';
 export * from './weatherClient';

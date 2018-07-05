@@ -75,16 +75,22 @@ class Weather extends command_1.default {
     async run() {
         const { flags, args: { location } } = this.parse(Weather);
         if (!this.accuweatherKey) {
-            this.error('There is not Accuweather API key, please create an .weatherrc.json and put a key at "accuweatherKey"');
+            this.log('There is not Accuweather API key, please create an .weatherrc.json and put a key at "accuweatherKey"');
         }
         try {
             const currentCondition = await new common_api_1.WeatherClient(this.accuweatherKey).getCurrentWeather(location);
             if (flags.emoji) {
-                this.log(emoji(currentCondition.icon));
+                const iconEmoji = emoji(currentCondition.icon);
+                return this.log(iconEmoji);
             }
         }
         catch (e) {
-            this.error('A little network error occurred, please check your internet connection!');
+            if (flags.error) {
+                this.error(e);
+            }
+            else {
+                this.log(e.message);
+            }
         }
     }
 }
@@ -127,6 +133,9 @@ Weather.flags = {
         description: 'Prints the weather in details, with temperature, wind and so on',
         exclusive: ['emoji', 'word', 'verbose'],
         allowNo: false,
+    }),
+    error: command_1.flags.boolean({
+        description: 'Prints the full error if one, with stack trace.'
     }),
 };
 exports.Weather = Weather;

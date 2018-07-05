@@ -15,6 +15,7 @@ export declare class Weather extends Command {
         word: import("../../node_modules/@oclif/parser/lib/flags").IBooleanFlag<boolean>;
         verbose: import("../../node_modules/@oclif/parser/lib/flags").IBooleanFlag<boolean>;
         complete: import("../../node_modules/@oclif/parser/lib/flags").IBooleanFlag<boolean>;
+        error: import("../../node_modules/@oclif/parser/lib/flags").IBooleanFlag<boolean>;
     };
     constructor(argv: string[], config: Config.IConfig, accuweatherKey: string);
     run(): Promise<void>;

@@ -87,29 +87,32 @@ export class Weather extends Command {
 
   public static flags = {
     emoji: flags.boolean({
-    char: 'e',
-    description: 'Prints the weather as an emoji',
-    exclusive: ['complete', 'word', 'verbose'],
-    allowNo: false,
-  }),
+      char: 'e',
+      description: 'Prints the weather as an emoji',
+      exclusive: ['complete', 'word', 'verbose'],
+      allowNo: false,
+    }),
     word: flags.boolean({
-    char: 'w',
-    description: 'Prints the weather as a short word',
-    exclusive: ['verbose', 'complete', 'emoji'],
-    allowNo: false,
-  }),
+      char: 'w',
+      description: 'Prints the weather as a short word',
+      exclusive: ['verbose', 'complete', 'emoji'],
+      allowNo: false,
+    }),
     verbose: flags.boolean({
-    char: 'v',
-    description: 'Prints the weather as a long sentence',
-    exclusive: ['word', 'complete', 'emoji'],
-    allowNo: false,
-  }),
+      char: 'v',
+      description: 'Prints the weather as a long sentence',
+      exclusive: ['word', 'complete', 'emoji'],
+      allowNo: false,
+    }),
     complete: flags.boolean({
-    char: 'c',
-    description: 'Prints the weather in details, with temperature, wind and so on',
-    exclusive: ['emoji', 'word', 'verbose'],
-    allowNo: false,
-  }),
+      char: 'c',
+      description: 'Prints the weather in details, with temperature, wind and so on',
+      exclusive: ['emoji', 'word', 'verbose'],
+      allowNo: false,
+    }),
+    error: flags.boolean({
+      description: 'Prints the full error if one, with stack trace.'
+    }),
   };
 
 constructor(argv: string[], config: Config.IConfig, private accuweatherKey: string) { 
@@ -120,17 +123,22 @@ constructor(argv: string[], config: Config.IConfig, private accuweatherKey: stri
 		const { flags, args: { location } } = this.parse(Weather); 
 
     if (!this.accuweatherKey) {
-		this.error('There is not Accuweather API key, please create an .weatherrc.json and put a key at "accuweatherKey"'); 
+		this.log('There is not Accuweather API key, please create an .weatherrc.json and put a key at "accuweatherKey"'); 
   }
 
     try {
-    const currentCondition = await new WeatherClient(this.accuweatherKey).getCurrentWeather(location);
+      const currentCondition = await new WeatherClient(this.accuweatherKey).getCurrentWeather(location);
 
-    if (flags.emoji) {
-		this.log(emoji(currentCondition.icon)); 
-  }
+      if (flags.emoji) {
+        const iconEmoji: string = emoji(currentCondition.icon);
+        return this.log(iconEmoji);
+      }
   } catch (e) {
-	this.error('A little network error occurred, please check your internet connection!'); 
-  }
+      if (flags.error) {
+        this.error(e);
+      } else {
+        this.log(e.message);
+      }
+    }
   }
 }

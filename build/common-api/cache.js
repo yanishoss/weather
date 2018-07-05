@@ -22,7 +22,9 @@ class Cache {
     push(key, data) {
         this.lockfile[key] = data;
         fs_1.writeFile(PATH, JSON.stringify(this.lockfile), (err) => {
-            throw err;
+            if (err) {
+                throw err;
+            }
         });
     }
 }

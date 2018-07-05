@@ -27,7 +27,7 @@ class Speed {
                 this._miPerH = speed;
                 break;
             default:
-                throw new Error('Unknown unit, please use either KM/H(0) or MI/H(1k)');
+                throw new Error('Unknown unit, please use either KM/H(0) or MI/H(1)');
         }
     }
     get miPerH() {

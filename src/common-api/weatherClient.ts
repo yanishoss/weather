@@ -115,7 +115,11 @@ export class WeatherClient {
         }
       }
 
-      const clientLocation: ILocalization = await getClientLocation(this.httpClient);
+      const clientLocation: ILocalization = await getClientLocation(this.httpClient)
+        .catch(() => {
+          throw new Error('Cannot get the client location)');
+        });
+
       cache.push('lastLocationCheck', new Date(Date.now()).getTime());
 
       const responseFromUserLocation: AxiosResponse = await this
@@ -124,7 +128,10 @@ export class WeatherClient {
   params: {
     details: true,
   },
-});
+        })
+        .catch((err) => {
+          throw new Error(`Cannot get the current condition. Here is the error: ${err}`);
+        });
 
       const userWeather: IWeatherCondition = responseToIWeatherCondition({
         ...responseFromUserLocation.data[0],
@@ -154,14 +161,21 @@ export class WeatherClient {
       }
     }
 
-    const localization: ILocalization = await getLocation(location, this.httpClient);
+    const localization: ILocalization = await getLocation(location, this.httpClient)
+    .catch((err) => {
+      throw new Error(`Cannot get the location you provided. Here is the error: ${err}`);
+    });
     const responseFromLocation: AxiosResponse = await this
 		.httpClient
 		.get(`/currentconditions/v1/${localization.key}.json`, {
   params: {
     details: true,
   },
-});
+    })
+    .catch((err) => {
+      throw new Error(`Cannot get the current condition of the provided location.
+        Here is the error: ${err}`);
+    });
 
     const locationWeather: IWeatherCondition = responseToIWeatherCondition({
       ...responseFromLocation.data[0],

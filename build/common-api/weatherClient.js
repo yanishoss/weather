@@ -78,7 +78,10 @@ class WeatherClient {
                     }
                 }
             }
-            const clientLocation = await getClientLocation(this.httpClient);
+            const clientLocation = await getClientLocation(this.httpClient)
+                .catch(() => {
+                throw new Error('Cannot get the client location)');
+            });
             cache.push('lastLocationCheck', new Date(Date.now()).getTime());
             const responseFromUserLocation = await this
                 .httpClient
@@ -86,6 +89,9 @@ class WeatherClient {
                 params: {
                     details: true,
                 },
+            })
+                .catch((err) => {
+                throw new Error(`Cannot get the current condition. Here is the error: ${err}`);
             });
             const userWeather = responseToIWeatherCondition(Object.assign({}, responseFromUserLocation.data[0], { City: clientLocation.city }));
             cache.push('lastUserWeather', Object.assign({}, userWeather, { date: userWeather.date.getTime() }));
@@ -102,13 +108,20 @@ class WeatherClient {
                 return responseFromCache;
             }
         }
-        const localization = await getLocation(location, this.httpClient);
+        const localization = await getLocation(location, this.httpClient)
+            .catch((err) => {
+            throw new Error(`Cannot get the location you provided. Here is the error: ${err}`);
+        });
         const responseFromLocation = await this
             .httpClient
             .get(`/currentconditions/v1/${localization.key}.json`, {
             params: {
                 details: true,
             },
+        })
+            .catch((err) => {
+            throw new Error(`Cannot get the current condition of the provided location.
+        Here is the error: ${err}`);
         });
         const locationWeather = responseToIWeatherCondition(Object.assign({}, responseFromLocation.data[0], { City: localization.city }));
         cache.push('results', Object.assign({}, responsesFromCache, { [location]: Object.assign({}, locationWeather, { date: locationWeather.date.getTime() }) }));

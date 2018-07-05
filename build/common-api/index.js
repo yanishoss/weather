@@ -4,7 +4,6 @@ function __export(m) {
 }
 Object.defineProperty(exports, "__esModule", { value: true });
 __export(require("./direction"));
-__export(require("./orientation"));
 __export(require("./speed"));
 __export(require("./temperature"));
 __export(require("./weatherClient"));

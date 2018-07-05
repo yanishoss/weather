@@ -22,7 +22,9 @@ export class Cache {
     this.lockfile[key] = data;
 
     writeFile(PATH, JSON.stringify(this.lockfile), (err) => {
-      throw err;
+      if (err) {
+        throw err;
+      }
     });
   }
 }
