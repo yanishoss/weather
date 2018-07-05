@@ -15,6 +15,7 @@
     "cosmiconfig": "5.0.5",
     "node-emoji": "1.8.1",
     "oclif": "1.8.5",
+    "proper-lockfile": "3.0.2",
     "public-ip": "2.4.0",
     "raven": "2.6.3",
     "user-home": "2.0.0"
@@ -22,9 +23,9 @@
   "devDependencies": {
     "@types/cosmiconfig": "5.0.2",
     "@types/jest": "23.0.2",
-    "@types/lockfile": "1.0.0",
     "@types/node": "10.3.2",
     "@types/node-emoji": "1.8.0",
+    "@types/proper-lockfile": "3.0.0",
     "@types/public-ip": "2.3.0",
     "@types/raven": "2.5.1",
     "@types/user-home": "2.0.0",
@@ -75,7 +76,7 @@
     "docs": "docsify serve ./docs",
     "format": "npm run lint && npm run prettify",
     "lint": "npx tslint --fix src/**/*.ts",
-    "prettify": "npx prettier **/*.ts",
+    "prettify": "npx prettier src/**/*.ts",
     "test": "jest --passWithNoTests"
   },
   "bin": {

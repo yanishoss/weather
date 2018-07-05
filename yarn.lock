@@ -153,10 +153,6 @@
   version "23.0.2"
   resolved "https://registry.yarnpkg.com/@types/jest/-/jest-23.0.2.tgz#f03f9e6dd2206cc2a2e8fd033161b0b7cf905db6"
 
-"@types/lockfile@1.0.0":
-  version "1.0.0"
-  resolved "https://registry.yarnpkg.com/@types/lockfile/-/lockfile-1.0.0.tgz#76a7c19c50fe8ee2b1666d653ff5d557c30fe0ff"
-
 "@types/node-emoji@1.8.0":
   version "1.8.0"
   resolved "https://registry.yarnpkg.com/@types/node-emoji/-/node-emoji-1.8.0.tgz#6bc88a880cdcb3c165e2828d056db242e8829a8b"
@@ -164,6 +160,10 @@
 "@types/node@*", "@types/node@10.3.2":
   version "10.3.2"
   resolved "https://registry.yarnpkg.com/@types/node/-/node-10.3.2.tgz#3840ec6c12556fdda6e0e6d036df853101d732a4"
+
+"@types/proper-lockfile@3.0.0":
+  version "3.0.0"
+  resolved "https://registry.yarnpkg.com/@types/proper-lockfile/-/proper-lockfile-3.0.0.tgz#dcc7cc3714857a4ae6583331d2687e89dc5c94d2"
 
 "@types/public-ip@2.3.0":
   version "2.3.0"
@@ -5207,6 +5207,13 @@ promzard@^0.3.0:
   dependencies:
     read "1"
 
+proper-lockfile@3.0.2:
+  version "3.0.2"
+  resolved "https://registry.yarnpkg.com/proper-lockfile/-/proper-lockfile-3.0.2.tgz#d30b3b83ecb157e08fe0d411f2393bc384b77ad1"
+  dependencies:
+    graceful-fs "^4.1.11"
+    retry "^0.10.1"
+
 proto-list@~1.2.1:
   version "1.2.4"
   resolved "https://registry.yarnpkg.com/proto-list/-/proto-list-1.2.4.tgz#212d5bfe1318306a420f6402b8e26ff39647a849"
@@ -5671,7 +5678,7 @@ ret@~0.1.10:
   version "0.1.15"
   resolved "https://registry.yarnpkg.com/ret/-/ret-0.1.15.tgz#b8a4825d5bdb1fc3f6f53c2bc33f81388681c7bc"
 
-retry@^0.10.0, retry@~0.10.1:
+retry@^0.10.0, retry@^0.10.1, retry@~0.10.1:
   version "0.10.1"
   resolved "https://registry.yarnpkg.com/retry/-/retry-0.10.1.tgz#e76388d217992c252750241d3d3956fed98d8ff4"
 
