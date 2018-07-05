@@ -11,9 +11,7 @@ class Cache {
     constructor() {
         this.lockfile = {};
         try {
-            proper_lockfile_1.lock(PATH, {
-                retries: 1000
-            })
+            proper_lockfile_1.lock(PATH, { retries: 1000 })
                 .then((release) => {
                 fs_1.readFile(PATH, 'utf8', (err, lockfile) => {
                     if (err) {
@@ -34,9 +32,7 @@ class Cache {
     push(key, data) {
         this.lockfile[key] = data;
         try {
-            proper_lockfile_1.lock(PATH, {
-                retries: 1000
-            })
+            proper_lockfile_1.lock(PATH, { retries: 1000 })
                 .then((release) => {
                 fs_1.writeFile(PATH, JSON.stringify(this.lockfile), (err) => {
                     if (err) {
