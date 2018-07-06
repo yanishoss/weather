@@ -64,6 +64,64 @@ function emoji(iconNumber: number): string {
   }
 }
 
+function word(iconNumber: number): string {
+  switch (iconNumber) {
+    case 1:
+    case 2:
+    case 3:
+    case 4:
+    case 5:
+    case 30:
+    default:
+      return "Sunny";
+      break;
+    case 6:
+    case 7:
+    case 8:
+    case 11:
+    case 32:
+      return "Cloudy";
+      break;
+    case 12:
+    case 13:
+    case 14:
+    case 18:
+    case 25:
+    case 26:
+      return "Rainy";
+      break;
+    case 15:
+    case 16:
+    case 17:
+      return "Stormy";
+      break;
+    case 19:
+    case 20:
+    case 21:
+    case 22:
+    case 23:
+    case 24:
+    case 29:
+    case 31:
+      return "Snowy";
+      break;
+    case 33:
+    case 34:
+    case 35:
+    case 36:
+    case 37:
+    case 38:
+    case 39:
+    case 40:
+    case 41:
+    case 42:
+    case 43:
+    case 44:
+      return "Night";
+      break;
+  }
+}
+
 export class Weather extends Command {
 
   public static description = 'Gets the current weather';
@@ -106,7 +164,7 @@ export class Weather extends Command {
     }),
     complete: flags.boolean({
       char: 'c',
-      description: 'Prints the weather in details, with temperature, wind and so on',
+      description: 'Prints the weather in details, with temperature, wind and so on. The default output.',
       exclusive: ['emoji', 'word', 'verbose'],
       allowNo: false,
     }),
@@ -132,6 +190,17 @@ constructor(argv: string[], config: Config.IConfig, private accuweatherKey: stri
       if (flags.emoji) {
         const iconEmoji: string = emoji(currentCondition.icon);
         return this.log(iconEmoji);
+      } else if (flags.word) {
+        // Put the code for the --word flag.
+        // It should print the weather as a word like "sunny", "cloudy" and so on.
+        return this.log(word(currentCondition.icon));
+      } else if (flags.verbose) {
+        // Put the code for the --verbose flag.
+        // It should print the weather as a sentence like "Today, Monday 13th, it is really cloudy."
+      } else {
+        // Put the code for the --complete flag.
+        // It's also the default output.
+        // It should print the weather with the exact temperature, the wind speed and so on.
       }
   } catch (e) {
       if (flags.error) {
