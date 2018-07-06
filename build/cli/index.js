@@ -124,6 +124,9 @@ function word(iconNumber) {
             break;
     }
 }
+function complete({ city, isDaylight, temperature, realFeelTemperature, humidity, wind, cloudCover }) {
+    return `City: ${city}\nTime: ${isDaylight ? "Day" : "Night"}\nTemperature: ${temperature.celsius.toFixed(1)} °C - ${temperature.fahrenheit.toFixed(1)} °F\nFelt Temperature: ${realFeelTemperature.celsius.toFixed(1)} °C - ${realFeelTemperature.fahrenheit.toFixed(1)} °F\nHumidity: ${humidity.toFixed(1)}%\nWind: \n\tSpeed: ${wind.speed.kmPerH.toFixed(1)} km/h - ${wind.speed.miPerH.toFixed(1)} mi/h\n\tDirection: ${wind.direction.degrees.toFixed(1)}° ${wind.direction.orientation}\nCloud: ${cloudCover.toFixed(1)}%`;
+}
 class Weather extends command_1.default {
     constructor(argv, config, accuweatherKey) {
         super(argv, config);
@@ -144,8 +147,10 @@ class Weather extends command_1.default {
                 return this.log(word(currentCondition.icon));
             }
             else if (flags.verbose) {
+                return this.log(currentCondition.phrase);
             }
             else {
+                return this.log(complete(currentCondition));
             }
         }
         catch (e) {

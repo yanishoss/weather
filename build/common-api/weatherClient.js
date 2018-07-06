@@ -56,6 +56,14 @@ function responseToIWeatherCondition(obj) {
         },
     };
 }
+function deserialize(obj) {
+    obj.realFeelTemperature = Object.setPrototypeOf(obj.realFeelTemperature, temperature_1.Temperature.prototype);
+    obj.temperature = Object.setPrototypeOf(obj.temperature, temperature_1.Temperature.prototype);
+    obj.wind.speed = Object.setPrototypeOf(obj.wind.speed, speed_1.Speed.prototype);
+    obj.wind.direction = Object.setPrototypeOf(obj.wind.direction, direction_1.Direction.prototype);
+    obj.date = new Date(obj.date);
+    return obj;
+}
 class WeatherClient {
     constructor(key) {
         this.httpClient = axios_1.default.create(httpConfig);
@@ -69,10 +77,10 @@ class WeatherClient {
             const lastLocationCheck = new Date(cache.fetch('lastLocationCheck') || 0);
             const checkValidityStamp = lastLocationCheck.getTime() + 1000 * 60 * 60;
             if (checkValidityStamp > Date.now()) {
-                const lastUserWeather = cache
+                let lastUserWeather = cache
                     .fetch('lastUserWeather');
                 if (lastUserWeather) {
-                    lastUserWeather.date = new Date(lastUserWeather.date);
+                    lastUserWeather = deserialize(lastUserWeather);
                     if (lastUserWeather.date.getTime() + 1000 * 60 * 60 > Date.now()) {
                         return lastUserWeather;
                     }
@@ -99,11 +107,11 @@ class WeatherClient {
         }
         const responsesFromCache = cache
             .fetch('results');
-        const responseFromCache = responsesFromCache
+        let responseFromCache = responsesFromCache
             ? responsesFromCache[location]
             : undefined;
         if (responseFromCache) {
-            responseFromCache.date = new Date(responseFromCache.date);
+            responseFromCache = deserialize(responseFromCache);
             if (responseFromCache.date.getTime() + 1000 * 60 * 60 > Date.now()) {
                 return responseFromCache;
             }
