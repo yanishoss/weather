@@ -1,5 +1,11 @@
 # :sunny: weather-in-terminal
 [![Build Status](https://travis-ci.org/yanishoss/weather.svg?branch=master)](https://travis-ci.org/yanishoss/weather)
+![npm](https://img.shields.io/npm/dt/weather-in-terminal.svg)
+[![npm version](https://badge.fury.io/js/weather-in-terminal.svg)](https://badge.fury.io/js/weather-in-terminal)
+[![GitHub stars](https://img.shields.io/github/stars/yanishoss/weather.svg)](https://github.com/yanishoss/weather/stargazers)
+[![GitHub license](https://img.shields.io/github/license/yanishoss/weather.svg)](https://github.com/yanishoss/weather/blob/master/LICENSE)
+[![GitHub issues](https://img.shields.io/github/issues/yanishoss/weather.svg)](https://github.com/yanishoss/weather/issues)
+
 > A simple CLI to see the weather while you're in your terminal.  
 > Because we know you don't glance outside that much often :sunglasses:
 
@@ -36,3 +42,4 @@ A [very young developer][profil] as you can image with his vocabulary and the wh
 [profil]: https://github.com/yanishoss
 [repository]: https://github.com/yanishoss/weather
 [trello]: https://trello.com/b/JleRVvFn/weather
+]
