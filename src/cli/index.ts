@@ -4,7 +4,7 @@ import Command, { flags } from '@oclif/command';
 import * as Config from '@oclif/config';
 import { get as getEmoji } from 'node-emoji';
 
-import { WeatherClient } from '../common-api';
+import { WeatherClient, IWeatherCondition } from '../common-api';
 
 function emoji(iconNumber: number): string {
   switch (iconNumber) {
@@ -122,6 +122,10 @@ function word(iconNumber: number): string {
   }
 }
 
+function complete({ city, isDaylight, temperature, realFeelTemperature, humidity, wind, cloudCover}: IWeatherCondition): string {
+  return `City: ${city}\nTime: ${isDaylight ? "Day" : "Night"}\nTemperature: ${temperature.celsius.toFixed(1)} °C - ${temperature.fahrenheit.toFixed(1)} °F\nFelt Temperature: ${realFeelTemperature.celsius.toFixed(1)} °C - ${realFeelTemperature.fahrenheit.toFixed(1)} °F\nHumidity: ${humidity.toFixed(1)}%\nWind: \n\tSpeed: ${wind.speed.kmPerH.toFixed(1)} km/h - ${wind.speed.miPerH.toFixed(1)} mi/h\n\tDirection: ${wind.direction.degrees.toFixed(1)}° ${wind.direction.orientation}\nCloud: ${cloudCover.toFixed(1)}%`;
+}
+
 export class Weather extends Command {
 
   public static description = 'Gets the current weather';
@@ -185,7 +189,7 @@ constructor(argv: string[], config: Config.IConfig, private accuweatherKey: stri
   }
 
     try {
-      const currentCondition = await new WeatherClient(this.accuweatherKey).getCurrentWeather(location);
+      const currentCondition: IWeatherCondition = await new WeatherClient(this.accuweatherKey).getCurrentWeather(location);
 
       if (flags.emoji) {
         const iconEmoji: string = emoji(currentCondition.icon);
@@ -197,10 +201,12 @@ constructor(argv: string[], config: Config.IConfig, private accuweatherKey: stri
       } else if (flags.verbose) {
         // Put the code for the --verbose flag.
         // It should print the weather as a sentence like "Today, Monday 13th, it is really cloudy."
+        return this.log(currentCondition.phrase);
       } else {
         // Put the code for the --complete flag.
         // It's also the default output.
         // It should print the weather with the exact temperature, the wind speed and so on.
+        return this.log(complete(currentCondition));
       }
   } catch (e) {
       if (flags.error) {

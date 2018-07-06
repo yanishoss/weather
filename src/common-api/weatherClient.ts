@@ -85,6 +85,15 @@ function responseToIWeatherCondition(obj: {[name: string]: any}): IWeatherCondit
   };
 }
 
+function deserialize(obj: IWeatherCondition): IWeatherCondition {
+  obj.realFeelTemperature = Object.setPrototypeOf(obj.realFeelTemperature, Temperature.prototype);
+  obj.temperature = Object.setPrototypeOf(obj.temperature, Temperature.prototype);
+  obj.wind.speed = Object.setPrototypeOf(obj.wind.speed, Speed.prototype);
+  obj.wind.direction = Object.setPrototypeOf(obj.wind.direction, Direction.prototype);
+  obj.date = new Date(obj.date);
+  return obj;
+}
+
 export class WeatherClient {
   private httpClient: AxiosInstance = axios.create(httpConfig);
 
@@ -104,11 +113,11 @@ export class WeatherClient {
 
       const checkValidityStamp: number = lastLocationCheck.getTime() + 1000 * 60 * 60;
       if (checkValidityStamp > Date.now()) {
-        const lastUserWeather: IWeatherCondition | undefined = cache
+        let lastUserWeather: IWeatherCondition | undefined = cache
 					.fetch<IWeatherCondition>('lastUserWeather');
 
         if (lastUserWeather) {
-          lastUserWeather.date = new Date(lastUserWeather.date);
+          lastUserWeather = deserialize(lastUserWeather);
           if (lastUserWeather.date.getTime() + 1000 * 60 * 60 > Date.now()) {
             return lastUserWeather;
           }
@@ -117,7 +126,7 @@ export class WeatherClient {
 
       const clientLocation: ILocalization = await getClientLocation(this.httpClient)
         .catch(() => {
-          throw new Error('Cannot get the client location');
+          throw new Error('Cannot get the client location)');
         });
 
       cache.push('lastLocationCheck', new Date(Date.now()).getTime());
@@ -149,12 +158,12 @@ export class WeatherClient {
     const responsesFromCache: IMapSearchToWeather | undefined = cache
 		.fetch<IMapSearchToWeather>('results');
 
-    const responseFromCache: IWeatherCondition | undefined = responsesFromCache
+    let responseFromCache: IWeatherCondition | undefined = responsesFromCache
 		? responsesFromCache[location]
 		: undefined;
 
     if (responseFromCache) {
-      responseFromCache.date = new Date(responseFromCache.date);
+      responseFromCache = deserialize(responseFromCache);
 
       if (responseFromCache.date.getTime() + 1000 * 60 * 60 > Date.now()) {
         return responseFromCache;
