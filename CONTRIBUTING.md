@@ -10,12 +10,12 @@
 To get started, just install the project on your local machine:
 ```shell
 # Clone the repository
-git clone https://github.com/yanishoss/weather
+$ git clone https://github.com/yanishoss/weather
 
 # Install the dependencies
-yarn 
+$ yarn 
 # or 
-npm install
+$ npm install
 ```
 
 ## :kiss: <a name="coding-style">Coding style</a>
