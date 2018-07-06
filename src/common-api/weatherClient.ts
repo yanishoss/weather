@@ -117,7 +117,7 @@ export class WeatherClient {
 
       const clientLocation: ILocalization = await getClientLocation(this.httpClient)
         .catch(() => {
-          throw new Error('Cannot get the client location)');
+          throw new Error('Cannot get the client location');
         });
 
       cache.push('lastLocationCheck', new Date(Date.now()).getTime());
