@@ -42,4 +42,4 @@ A [very young developer][profil] as you can image with his vocabulary and the wh
 [profil]: https://github.com/yanishoss
 [repository]: https://github.com/yanishoss/weather
 [trello]: https://trello.com/b/JleRVvFn/weather
-]
+
